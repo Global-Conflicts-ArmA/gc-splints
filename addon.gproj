@@ -1,0 +1,8 @@
+GameProject {
+ ID "GCSplints"
+ GUID "668694557A25D236"
+ TITLE "GC Splints"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}

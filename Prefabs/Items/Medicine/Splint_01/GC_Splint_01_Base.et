@@ -1,0 +1,82 @@
+GenericEntity : "{C95E11C60810F432}Prefabs/Items/Core/Item_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222EB4D07D865FA}" {
+     m_aItemHints {
+      SCR_InventoryItemHintUIInfo "{66E97291483E312B}" {
+       Name "#AR-InfoWidget_Bandage"
+       Icon "{B9199157B90D6216}UI/Textures/InventoryIcons/Medical/Medical-icons.imageset"
+       IconSetName "Blood_UI"
+      }
+     }
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.1
+     SizeSetupStrategy Manual
+     ItemDimensions 5 5 5
+     ItemVolume 150
+     DimensionScaler 1
+     RestingAdditiveRotationLS 0 0 0
+     RestingAdditiveOffsetLS 0 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{66E97291483E311B}" {
+     AnimationInstance "{4FCBEA45CAEBC9C0}anims/workspaces/player/player_main_1h.asi"
+     AnimationIKPose "{3E5C93E85F05C6B5}Assets/Weapons/Grenades/RGD5/anims/anm/p_rgd5_ik.anm"
+     AnimationAttachments {
+      AnimationAttachmentInfo "{66E97291483E3114}" {
+       AnimGraph "{883777E45A6C4DA1}Assets/Items/Medicine/Workspaces/Gauze_01.agr"
+       AnimInstance "{79BD98038DD60F88}Assets/Items/Medicine/Workspaces/Gauze_01_player.asi"
+       BindingName "Gadget"
+      }
+     }
+    }
+    CustomAttributes {
+     ItemActionAnimAttributes "{66E97291483E310D}" {
+      AnimationGraphTemplate "{DFFC0A34A77ADCB4}anims/workspaces/player/player_main.agr"
+      ActionAnimationCommandName "CMD_HealSelf"
+      AllowMovementDuringAction 1
+     }
+     CharacterModifierAttributes "{66E97291483E310C}" {
+      SpeedLimitItemPrimaryAction 0.5
+     }
+     SCR_ItemOfInterestAttribute "{66E97291483E310E}" {
+      m_InterestType BANDAGE
+     }
+     SCR_SelectionMenuPreviewAttributes "{66E97291483E3109}" {
+      m_bShowMedicalColor 1
+     }
+     SCR_AlternativeModel "{66E97291483E3108}" {
+      m_sAlternativeModel "{9EF00D573FC5604A}Assets/Items/Medicine/Gauze_01/Gauze_01_packed.xob"
+     }
+     PreviewRenderAttributes "{66E97291483E3703}" {
+      CameraPreset Top
+      FOV 10
+      AspectRatio 1
+     }
+    }
+    CommonItemType "GC_SPLINT"
+   }
+  }
+  MeshObject "{66E97291483E370C}" {
+   Object "{A85D414EF4DCC2AC}Assets/Items/Medicine/Gauze_02/Gauze_02_bandage.xob"
+  }
+  RigidBody "{66E97291483E370D}" {
+   Mass 1
+   LinearDamping 0.5
+   AngularDamping 0.5
+   ModelGeometry 1
+  }
+  SCR_ConsumableItemComponent "{66E97291483E3708}" {
+   m_eAnimVariable ADRIANOV
+   m_eUseMask 7
+   m_ConsumableEffect GC_ConsumableSplint "{66E972910B14D3FA}" {
+    m_aDamageEffectsToLoad {
+     GC_SplintDamageEffect "{66E9729103CA4635}" {
+     }
+    }
+   }
+  }
+ }
+}
