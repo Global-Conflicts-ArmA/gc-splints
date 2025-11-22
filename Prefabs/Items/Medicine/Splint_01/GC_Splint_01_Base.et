@@ -4,11 +4,13 @@ GenericEntity : "{C95E11C60810F432}Prefabs/Items/Core/Item_Base.et" {
   InventoryItemComponent "{5222EB4D0C73006B}" {
    Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
     ItemDisplayName SCR_InventoryUIInfo "{5222EB4D07D865FA}" {
+     Name "Splint"
+     Description "Used to support and stabilize an injured body part such as a broken bone."
      m_aItemHints {
       SCR_InventoryItemHintUIInfo "{66E97291483E312B}" {
-       Name "#AR-InfoWidget_Bandage"
+       Name "Splint"
        Icon "{B9199157B90D6216}UI/Textures/InventoryIcons/Medical/Medical-icons.imageset"
-       IconSetName "Blood_UI"
+       IconSetName "Bone-Fracture_UI"
       }
      }
     }
@@ -36,7 +38,8 @@ GenericEntity : "{C95E11C60810F432}Prefabs/Items/Core/Item_Base.et" {
      ItemActionAnimAttributes "{66E97291483E310D}" {
       AnimationGraphTemplate "{DFFC0A34A77ADCB4}anims/workspaces/player/player_main.agr"
       ActionAnimationCommandName "CMD_HealSelf"
-      AllowMovementDuringAction 1
+      ActionAnimDuration 10
+      AllowMovementDuringAction 0
      }
      CharacterModifierAttributes "{66E97291483E310C}" {
       SpeedLimitItemPrimaryAction 0.5
@@ -51,9 +54,11 @@ GenericEntity : "{C95E11C60810F432}Prefabs/Items/Core/Item_Base.et" {
       m_sAlternativeModel "{9EF00D573FC5604A}Assets/Items/Medicine/Gauze_01/Gauze_01_packed.xob"
      }
      PreviewRenderAttributes "{66E97291483E3703}" {
-      CameraPreset Top
-      FOV 10
+      CameraOrbitAngles -180 0 -45
+      CameraDistanceToItem 0.5
+      FOV 20
       AspectRatio 1
+      LodModel 1
      }
     }
     CommonItemType "GC_SPLINT"
@@ -72,6 +77,8 @@ GenericEntity : "{C95E11C60810F432}Prefabs/Items/Core/Item_Base.et" {
    m_eAnimVariable ADRIANOV
    m_eUseMask 7
    m_ConsumableEffect GC_ConsumableSplint "{66E972910B14D3FA}" {
+    m_fApplyToSelfDuration 10
+    m_fApplyToOtherDuration 10
     m_aDamageEffectsToLoad {
      GC_SplintDamageEffect "{66E9729103CA4635}" {
      }

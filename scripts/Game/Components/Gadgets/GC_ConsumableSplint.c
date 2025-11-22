@@ -71,16 +71,16 @@ class GC_ConsumableSplint : SCR_ConsumableEffectHealthItems
 		if (!damageMgr)
 			return null;
 
-		EBandagingAnimationBodyParts bodyPartToBandage = EBandagingAnimationBodyParts.Invalid;
+		EBandagingAnimationBodyParts bodyPartToSplint = EBandagingAnimationBodyParts.Invalid;
 		
 		if (group != ECharacterHitZoneGroup.VIRTUAL)
 		{
 			if (!damageMgr.GetGroupIsBeingHealed(group))
-				bodyPartToBandage = damageMgr.FindAssociatedBandagingBodyPart(group);
+				bodyPartToSplint = damageMgr.FindAssociatedBandagingBodyPart(group);
 		}
 		else
 		{
-			group = damageMgr.GetCharMostDOTHitzoneGroup(EDamageType.BLEEDING, true, true, true);
+			group = damageMgr.GetCharMostDamageHitzoneGroup(true, true);
 			if (!group)
 				return null;
 			
@@ -91,13 +91,13 @@ class GC_ConsumableSplint : SCR_ConsumableEffectHealthItems
 			if (!charHitZone)
 				return null;
 			
-			bodyPartToBandage = charHitZone.GetBodyPartToHeal();
+			bodyPartToSplint = charHitZone.GetBodyPartToHeal();
 		}
 		
-		if (bodyPartToBandage == EBandagingAnimationBodyParts.Invalid)
+		if (bodyPartToSplint == EBandagingAnimationBodyParts.Invalid)
 				return null;
 		
-		bool allowMovement = bodyPartToBandage != EBandagingAnimationBodyParts.RightLeg && bodyPartToBandage != EBandagingAnimationBodyParts.LeftLeg;
+		bool allowMovement = bodyPartToSplint != EBandagingAnimationBodyParts.RightLeg && bodyPartToSplint != EBandagingAnimationBodyParts.LeftLeg;
 		
 		ItemUseParameters params = ItemUseParameters();
 		params.SetEntity(item);
@@ -107,7 +107,8 @@ class GC_ConsumableSplint : SCR_ConsumableEffectHealthItems
 		params.SetCommandIntArg(1);
 		params.SetCommandFloatArg(0.0);
 		params.SetMaxAnimLength(m_fApplyToSelfDuration);
-		params.SetIntParam(bodyPartToBandage);
+		params.SetIntParam(bodyPartToSplint);
+		params.SetIntParam(bodyPartToSplint);
 
 		return params;
 	}
