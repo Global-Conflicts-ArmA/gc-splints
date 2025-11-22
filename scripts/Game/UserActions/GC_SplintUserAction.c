@@ -36,7 +36,7 @@ class GC_SplintUserAction : SCR_HealingUserAction
 		if (!damageMgr)
 			return false;
 		
-		if (damageMgr.GetAimingDamage() == 0 && damageMgr.GetMovementDamage() == 0)
+		if (damageMgr.GetGroupHealthScaled(m_eHitZoneGroup) == 1)
 		{
 			SetCannotPerformReason(m_sNotDamaged);
 			return false;

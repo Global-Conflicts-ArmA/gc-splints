@@ -20,7 +20,7 @@ class GC_SplintDamageEffect : SCR_InstantDamageEffect
 		damageMgr.GetHitZonesOfGroup(charHZ.GetHitZoneGroup(), hitZones);
 		if (hitZones.IsEmpty())
 		{
-			return;
+			hzGroup = damageMgr.GetCharMostDamageHitzoneGroup(true, true);
 		}
 		else
 		{
